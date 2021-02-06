@@ -76,21 +76,21 @@ to_value(Type const & value)
 }
 
 template<typename Type, typename = std::enable_if_t<!std::is_reference_v<Type>>>
-inline constexpr ValueStorage<Type>
+constexpr ValueStorage<Type>
 to_value(Type && value)
 {
     return ValueStorage<Type>{std::forward<Type>(value)};
 }
 
 template<typename Type>
-inline constexpr ErrorStorage<Type>
+constexpr ErrorStorage<Type>
 to_error(Type const & value)
 {
     return ErrorStorage<Type>{value};
 }
 
 template<typename Type, typename = std::enable_if_t<!std::is_reference_v<Type>>>
-inline constexpr ErrorStorage<Type>
+constexpr ErrorStorage<Type>
 to_error(Type && value)
 {
     return ErrorStorage<Type>{std::forward<Type>(value)};
